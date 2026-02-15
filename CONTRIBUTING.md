@@ -2,18 +2,18 @@
 
 ## Setting up a development environment
 
-Use of virtual environments will allow for isolated installation of testing requirements:
+Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and run:
 
 ```bash
-./bootstrap
+uv sync
 ```
 
 ## Running Tests
 
 ```bash
-source env/bin/activate
-flake8
-coverage run && coverage report
+uv run ruff check .
+uv run ruff format --check .
+uv run coverage run && uv run coverage report
 ```
 
 `coverage xml` && `coverage html` are configured to output reports in the `build` directory.
@@ -24,12 +24,12 @@ To contribute to `flatdict`, please make sure that any new features or changes t
 
 *Pull requests that add or change code without coverage have a much lower chance of being accepted.*
 
-**Pull requests that fail flake8 tests as configured will not be accepted.**
+**Pull requests that fail ruff checks as configured will not be accepted.**
 
 ## Code Formatting
 
-Please format your code using [yapf](http://pypi.python.org/pypi/yapf)
-with ``pep8`` style prior to issuing your pull request.
+Please format your code using [ruff](https://docs.astral.sh/ruff/)
+prior to issuing your pull request.
 
 ## Versioning
 
